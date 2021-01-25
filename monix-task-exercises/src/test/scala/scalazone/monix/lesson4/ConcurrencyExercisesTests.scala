@@ -21,7 +21,7 @@ class ConcurrencyExercisesTests extends BaseTestSuite {
     s.tick(10.second)
     f.value shouldEqual Some(Success(30))
   }
-  
+
   test("ConcurrencyExercises.ex2") {
     implicit val s = TestScheduler()
 
@@ -40,7 +40,7 @@ class ConcurrencyExercisesTests extends BaseTestSuite {
 
   test("ConcurrencyExercises.ex3") {
     implicit val s = TestScheduler()
-    
+
     def foo(i: Int): Task[Int] =
       if (i % 2 == 0) Task.raiseError(DummyException("error"))
       else Task.now(i).delayExecution(1.second)

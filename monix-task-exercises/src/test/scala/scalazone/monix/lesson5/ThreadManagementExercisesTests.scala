@@ -40,13 +40,13 @@ class ThreadManagementExercisesTests extends BaseTestSuite {
     f.value shouldEqual None
     effect shouldEqual 1
     blockingEffect shouldEqual 0
-    
+
     // No changes after scheduling everything on s1
     s1.tick()
     f.value shouldEqual None
     effect shouldEqual 1
     blockingEffect shouldEqual 0
-    
+
     // execute blockingTask
     s2.tick()
     f.value shouldEqual None
