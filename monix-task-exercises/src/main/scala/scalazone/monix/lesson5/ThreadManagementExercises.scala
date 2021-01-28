@@ -3,8 +3,7 @@ package scalazone.monix.lesson5
 import monix.eval.Task
 import monix.execution.Scheduler
 
-/**
-  * Run with
+/** Run with
   * {{{
   *   sbt "monix-task-exercises/runMain scalazone.monix.lesson5.ThreadManagementExercises"
   * }}}

@@ -128,9 +128,9 @@ class ErrorHandlingExercisesTests extends BaseTestSuite {
   }
 
   test("ErrorHandlingExercises.ex5 should succeed after few retries") {
-    val testS      = TestScheduler()
-    val dummy      = DummyException("BOOM")
-    var shouldFail = true
+    val testS           = TestScheduler()
+    val dummy           = DummyException("BOOM")
+    var shouldFail      = true
     val task: Task[Int] = Task.suspend {
       if (shouldFail) Task.raiseError(dummy)
       else Task.now(10)

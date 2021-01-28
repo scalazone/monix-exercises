@@ -2,8 +2,7 @@ package scalazone.monix.lesson4
 
 import monix.eval.Task
 
-/**
-  * Run with
+/** Run with
   * {{{
   *   sbt "monix-task-solutions/runMain scalazone.monix.lesson4.ConcurrencyExercisesSolutions"
   * }}}
@@ -15,8 +14,7 @@ import monix.eval.Task
   */
 object ConcurrencyExercisesSolutions extends App {
 
-  /**
-    * Compute a sum of both tasks in parallel
+  /** Compute a sum of both tasks in parallel
     */
   def ex1(fa: Task[Int], fb: Task[Int]): Task[Int] = Task.parMap2(fa, fb)(_ + _)
 

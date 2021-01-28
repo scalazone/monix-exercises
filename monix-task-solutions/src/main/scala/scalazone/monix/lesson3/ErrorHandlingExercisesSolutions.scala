@@ -5,8 +5,7 @@ import monix.execution.exceptions.DummyException
 
 import scala.concurrent.duration.FiniteDuration
 
-/**
-  * Run with
+/** Run with
   * {{{
   *   sbt "monix-task-solutions/runMain scalazone.monix.lesson3.ErrorHandlingExercisesSolutions"
   * }}}
@@ -18,16 +17,14 @@ import scala.concurrent.duration.FiniteDuration
   */
 object ErrorHandlingExercisesSolutions extends App {
 
-  /**
-    * Exercise 1
+  /** Exercise 1
     *
     * Use `onErrorHandle` to fallback to `default` in case the `Task` has an error.
     */
   def ex1[A](task: Task[A], default: A): Task[A] =
     task.onErrorHandle(_ => default)
 
-  /**
-    * Exercise 2
+  /** Exercise 2
     *
     * Write a method that will recover with `default`,
     * but only if the exception is `DummyException`
@@ -40,8 +37,7 @@ object ErrorHandlingExercisesSolutions extends App {
 
   // Alternatively task.onErrorRecover { case _: DummyException => default }
 
-  /**
-    * Exercise 3
+  /** Exercise 3
     *
     * Use `redeem` to construct a `Task` that will
     * multiply value of `task` by 10 if it's successful but
@@ -50,8 +46,7 @@ object ErrorHandlingExercisesSolutions extends App {
   def ex3(task: Task[Int]): Task[Int] =
     task.redeem(_ => 20, _ * 10)
 
-  /**
-    * Exercise 4
+  /** Exercise 4
     *
     * Write a method which handle all errors in a Task end exposes them as `Left` in `Either`.
     *
@@ -61,8 +56,7 @@ object ErrorHandlingExercisesSolutions extends App {
   def ex4[A](task: Task[A]): Task[Either[Throwable, A]] =
     task.redeem(ex => Left(ex), a => Right(a))
 
-  /**
-    * Exercise 5
+  /** Exercise 5
     *
     * Write a recursive function which will retry Task up to `maxRetries`
     * with exponential backoff (e.g. 1s, 2s, 4s, 8s, 16s, ... ) between retries.

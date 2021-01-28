@@ -10,15 +10,13 @@ object RunningTaskExercisesSolutions extends App {
 
   implicit val s: Scheduler = Scheduler.Implicits.global
 
-  /**
-    * Exercise 1
+  /** Exercise 1
     *
     * Use `runToFuture` to run `exerciseTask` and print its result
     */
   val f = exerciseTask.runToFuture.map(println)
 
-  /**
-    * Exercise 2
+  /** Exercise 2
     *
     * Use `runAsync` to run `exerciseTask` and print its result
     */
@@ -27,8 +25,7 @@ object RunningTaskExercisesSolutions extends App {
     case Right(value) => println(s"Task has finished with a successful value: $value")
   }
 
-  /**
-    * Exercise 3
+  /** Exercise 3
     *
     * Use `runSyncUnsafe` to run `exerciseTask` and print its result
     */
