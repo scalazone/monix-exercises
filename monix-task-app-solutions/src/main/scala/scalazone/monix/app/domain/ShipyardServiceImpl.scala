@@ -8,6 +8,8 @@ import scalazone.monix.app._
 import scalazone.monix.app.domain.ShipyardServiceImpl.{CrewServiceError, MarketServiceError}
 import scalazone.monix.app.external._
 
+import scala.util.control.NoStackTrace
+
 final class ShipyardServiceImpl(
     officialMarket: MarketService,
     smugglersMarket: MarketService,
@@ -206,7 +208,7 @@ final class ShipyardServiceImpl(
 }
 
 object ShipyardServiceImpl {
-  final case class CrewServiceError(msg: String) extends Exception(msg)
+  final case class CrewServiceError(msg: String) extends Exception(msg) with NoStackTrace
 
-  final case class MarketServiceError(msg: String) extends Exception(msg)
+  final case class MarketServiceError(msg: String) extends Exception(msg) with NoStackTrace
 }
