@@ -112,10 +112,10 @@ object ShipConstructionStatus {
     )
   }
 
-  implicit val decodeFoo: Decoder[ShipConstructionStatus] = new Decoder[ShipConstructionStatus] {
+  implicit val decoder: Decoder[ShipConstructionStatus] = new Decoder[ShipConstructionStatus] {
     final def apply(c: HCursor): Decoder.Result[ShipConstructionStatus] =
       for {
-        orderId <- c.downField("orderId").as[OrderId]
+        orderId <- c.downField("orderId").as[String]
         shipTypeStr <- c.downField("shipType").as[String]
         shipType <- {
           shipTypeStr match {
@@ -146,7 +146,7 @@ object ShipConstructionStatus {
 
       } yield {
         new ShipConstructionStatus(
-          orderId,
+          OrderId(orderId),
           shipType,
           rate,
           crewReady,

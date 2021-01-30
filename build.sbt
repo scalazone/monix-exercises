@@ -30,7 +30,6 @@ lazy val `monix-task-app` = (project in file("monix-task-app"))
     libraryDependencies ++= Seq(
       "com.softwaremill.sttp.tapir" %% "tapir-akka-http-server" % "0.17.0",
       "com.softwaremill.sttp.tapir" %% "tapir-json-circe" % "0.17.0",
-      "io.circe" %% "circe-generic-extras" % "0.13.0",
       "com.typesafe.akka" %% "akka-testkit" % "2.6.10" % Test,
       "com.typesafe.akka" %% "akka-http-testkit" % "10.2.1" % Test,
       "de.heikoseeberger" %% "akka-http-circe" % "1.33.0" % Test
@@ -44,11 +43,9 @@ lazy val `monix-task-app-solutions` = (project in file("monix-task-app-solutions
     libraryDependencies ++= Seq(
       "com.softwaremill.sttp.tapir" %% "tapir-akka-http-server" % "0.17.0",
       "com.softwaremill.sttp.tapir" %% "tapir-json-circe" % "0.17.0",
-      "io.circe" %% "circe-generic-extras" % "0.13.0",
       "com.typesafe.akka" %% "akka-testkit" % "2.6.10" % Test,
       "com.typesafe.akka" %% "akka-http-testkit" % "10.2.1" % Test,
       "de.heikoseeberger" %% "akka-http-circe" % "1.33.0" % Test,
-      "org.scalamock" %% "scalamock" % "5.0.0" % Test
     ).map(_.withDottyCompat(scalaVersion.value))
   )
   .settings(commonSettings)
