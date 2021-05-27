@@ -1,14 +1,15 @@
 
-val monixVersion = "3.3.0"
+val monixVersion = "3.4.0"
+val scala3Version = "3.0.0"
 
 fork := true
 
 lazy val commonSettings = Seq(
-  scalaVersion := "3.0.0-M3",
+  scalaVersion := scala3Version,
   libraryDependencies ++= Seq(
-    ("io.monix" %% "monix" % monixVersion).withDottyCompat(scalaVersion.value),
-    "org.scalatest" %% "scalatest" % "3.2.3" % Test,
-    "org.scalatest" %% "scalatest-funsuite" % "3.2.3" % Test
+    ("io.monix" %% "monix" % monixVersion).cross(CrossVersion.for3Use2_13),
+    "org.scalatest" %% "scalatest" % "3.2.9" % Test,
+    "org.scalatest" %% "scalatest-funsuite" % "3.2.9" % Test
   )
 )
 
@@ -33,7 +34,7 @@ lazy val `monix-task-app` = (project in file("monix-task-app"))
       "com.typesafe.akka" %% "akka-testkit" % "2.6.10" % Test,
       "com.typesafe.akka" %% "akka-http-testkit" % "10.2.1" % Test,
       "de.heikoseeberger" %% "akka-http-circe" % "1.33.0" % Test
-    ).map(_.withDottyCompat(scalaVersion.value))
+    ).map(_.cross(CrossVersion.for3Use2_13))
   )
   .settings(commonSettings)
 
@@ -46,6 +47,6 @@ lazy val `monix-task-app-solutions` = (project in file("monix-task-app-solutions
       "com.typesafe.akka" %% "akka-testkit" % "2.6.10" % Test,
       "com.typesafe.akka" %% "akka-http-testkit" % "10.2.1" % Test,
       "de.heikoseeberger" %% "akka-http-circe" % "1.33.0" % Test,
-    ).map(_.withDottyCompat(scalaVersion.value))
+    ).map(_.cross(CrossVersion.for3Use2_13))
   )
   .settings(commonSettings)
