@@ -138,10 +138,10 @@ class ResourceSafetyExercisesTests extends BaseTestSuite {
     val f2 = ResourceSafetyExercisesSolutions.ex3(() => inputStream).runToFuture
 
     s.tick()
-    f1.value shouldEqual None
+    f2.value shouldEqual None
     f2.cancel()
     s.tick(1.second)
-    f1.value shouldEqual None
+    f2.value shouldEqual None
     s.state.tasks.isEmpty shouldEqual true
   }
 }
